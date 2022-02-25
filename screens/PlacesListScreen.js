@@ -1,14 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, FlatList } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useSelector } from 'react-redux';
 
 import HeaderButton from '../components/HeaderButton';
+import PlaceItem from '../components/PlaceItem';
 
 const PlacesListScreen = props => {
+    const places = useSelector(state => state.places.places)
+
     return (
-        <View style={styles.centered}>
-            <Text>Tela de lugares!</Text>
-        </View>
+        <FlatList 
+            data={places} 
+            renderItem={itemData => <PlaceItem 
+                                        image={null}
+                                        title={itemData.item.title}
+                                        addres={null}
+                                        onSelect={() => {
+                                            props.navigation.navigate('PlaceDetail', {
+                                                placeTitle: itemData.item.title,
+                                                placeId: itemData.item.id
+                                            })
+                                        }} 
+                                    />} 
+        />
     );
 };
 

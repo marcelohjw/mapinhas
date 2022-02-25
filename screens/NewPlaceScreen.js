@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 
 import Colors from '../constants/Colors';
+import * as placesActions from '../store/places-actions';
 
 const NewPlaceScreen = props => {
     const [titleValue, setTitleValue] = useState('');
+
+    const dispatch = useDispatch();
 
     const titleChangeHandler = text => {
         // Validação aqui
@@ -12,7 +16,8 @@ const NewPlaceScreen = props => {
     };
 
     const savePlaceHandler = () => {
-        Alert.alert(titleValue);
+        dispatch(placesActions.addPlace(titleValue));
+        props.navigation.navigate('Places');
     };
 
     return (
