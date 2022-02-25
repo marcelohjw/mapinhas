@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+
+import HeaderButton from '../components/HeaderButton';
 
 const PlacesListScreen = props => {
     return (
         <View style={styles.centered}>
-            <Text>Places List Screen!</Text>
+            <Text>Tela de lugares!</Text>
         </View>
     );
 };
@@ -16,5 +19,20 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+PlacesListScreen.navigationOptions = navData => {
+    return {
+        headerTitle: 'Lugares',
+        headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item 
+                    title='Adicionar lugar' 
+                    iconName='ios-add' 
+                    onPress={() => {
+                        navData.navigation.navigate('NewPlace');
+                    }}
+                    />
+            </HeaderButtons>
+    };
+};
 
 export default PlacesListScreen;

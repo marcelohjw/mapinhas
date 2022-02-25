@@ -1,12 +1,24 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const PlacesListScreen = props => {
+const NewPlaceScreen = props => {
     return (
-        <View>
-            <Text>New place Screen!</Text>
+        <View style={styles.centered}>
+            <Text>Tela de adicionar lugar!</Text>
         </View>
     );
 };
 
-export default PlacesListScreen;
+NewPlaceScreen.navigationOptions = {
+    headerTitle: 'Adicionar Lugar'
+};
+
+const styles = StyleSheet.create({
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
+
+export default NewPlaceScreen;
