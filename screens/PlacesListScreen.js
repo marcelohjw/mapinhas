@@ -13,7 +13,7 @@ const PlacesListScreen = props => {
         <FlatList 
             data={places} 
             renderItem={itemData => <PlaceItem 
-                                        image={null}
+                                        image={itemData.item.imageUri}
                                         title={itemData.item.title}
                                         addres={null}
                                         onSelect={() => {
