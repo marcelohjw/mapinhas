@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
 PlacesListScreen.navigationOptions = navData => {
     return {
-        headerTitle: 'Lugares',
+        headerTitle: 'Mapinhas',
         headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item 
                     title='Adicionar lugar' 

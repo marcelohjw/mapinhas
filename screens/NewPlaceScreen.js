@@ -4,6 +4,7 @@ import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-nat
 
 import Colors from '../constants/Colors';
 import * as placesActions from '../store/places-actions';
+import ImagePicker from '../components/ImagePicker';
 
 const NewPlaceScreen = props => {
     const [titleValue, setTitleValue] = useState('');
@@ -29,6 +30,7 @@ const NewPlaceScreen = props => {
                     onChangeText={titleChangeHandler}
                     value={titleValue}
                 />
+                <ImagePicker />
                 <Button 
                     title='Salvar' 
                     color={Colors.primary} 
