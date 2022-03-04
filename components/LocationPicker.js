@@ -3,6 +3,7 @@ import { View, Button, Text, ActivityIndicator, Alert, StyleSheet } from 'react-
 import * as Location from 'expo-location';
 
 import Colors from '../constants/Colors';
+import MapPreview from './MapPreview';
 
 const LocationPicker = props => {
     const [isFetching, setIsFetching] = useState(false);
@@ -42,13 +43,13 @@ const LocationPicker = props => {
 
     return (
         <View style={styles.locationPicker}>
-            <View style={styles.mapPreview}>
+            <MapPreview style={styles.mapPreview} location={pickedLocation}>
                 {isFetching ? (
                     <ActivityIndicator size={'large'} color={Colors.primary}/>
                 ) : (
                     <Text>Nenhuma localização definida.</Text>
                 )}
-            </View>
+            </MapPreview>
             <Button 
                 title='Localizar' 
                 onPress={getLocationHandler}
@@ -67,9 +68,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 150,
         borderColor: '#ccc',
-        borderWidth: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        borderWidth: 1
     }
 });
 
